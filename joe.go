@@ -106,7 +106,7 @@ func main() {
 	app.Usage = "generate .gitignore files from the command line"
 	app.UsageText = "joe command [arguments...]"
 	app.Version = version
-	app.Commands = []cli.Command{
+	app.Commands = []*cli.Command{
 		{
 			Name:    "ls",
 			Aliases: []string{"list"},
@@ -149,7 +149,7 @@ func main() {
 				if c.NArg() != 1 {
 					cli.ShowAppHelp(c)
 				} else {
-					generate(c.Args()[0])
+					generate(c.Args().Get(0))
 				}
 				return nil
 			},
